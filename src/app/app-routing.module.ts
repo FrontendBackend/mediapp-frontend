@@ -26,7 +26,11 @@ const routes: Routes = [
     component: LayoutComponent,
     loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
   },
-  { path: 'not-404', component: Not404Component },
+  {
+    path: 'not-404',
+    component: Not404Component,
+    data: { title: 'not-404', breadcrumb: 'not-404' }
+  },
   {
     path: '**',
     redirectTo: 'not-404'

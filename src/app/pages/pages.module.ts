@@ -27,6 +27,8 @@ import { Not404Component } from './not404/not404.component';
 import { NuevoComponent } from './login/nuevo/nuevo.component';
 import { RecuperarComponent } from './login/recuperar/recuperar.component';
 import { TokenComponent } from './login/recuperar/token/token.component';
+import { SignosVitalesComponent } from './signos-vitales/signos-vitales.component';
+import { SignosVitalesEdicionComponent } from './signos-vitales/signos-vitales-edicion/signos-vitales-edicion.component';
 
 
 @NgModule({
@@ -62,7 +64,9 @@ import { TokenComponent } from './login/recuperar/token/token.component';
         Not404Component,
         NuevoComponent,
         RecuperarComponent,
-        TokenComponent            
+        TokenComponent,
+        SignosVitalesComponent,
+        SignosVitalesEdicionComponent            
     ],
     providers: [],
 })

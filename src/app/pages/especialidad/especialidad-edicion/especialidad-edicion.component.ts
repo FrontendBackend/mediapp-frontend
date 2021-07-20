@@ -75,7 +75,7 @@ export class EspecialidadEdicionComponent implements OnInit {
       });
     }
 
-    this.router.navigate(['especialidad']);
+    this.router.navigate(['pages/especialidad']);
   }
 
 }
