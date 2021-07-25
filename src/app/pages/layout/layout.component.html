@@ -1,45 +1,51 @@
-
 <div class="example-container">
-    <mat-toolbar color="primary" class="example-toolbar" >
-        <button mat-icon-button (click)="sidenav.toggle()">
-            <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
-            <mat-icon *ngIf="sidenav.opened">close</mat-icon>
-        </button>
+  <mat-toolbar color="primary" class="example-toolbar">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+      <mat-icon *ngIf="sidenav.opened">close</mat-icon>
+    </button>
 
-        <h1 class="example-app-name">MEDIAPP</h1>
+    <h1 class="example-app-name">MEDIAPP</h1>
 
-        <span class="example-spacer"></span>
+    <span class="example-spacer"></span>
 
-        <button mat-icon-button [matMenuTriggerFor]="menu">
-            <mat-icon>more_vert</mat-icon>
-        </button>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
 
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item routerLink="/perfil">
-                <mat-icon>account_box</mat-icon>
-                <span>Mi Perfil</span>
-            </button>
-            <button mat-menu-item (click)="sidenav.opened = false" (click)="loginService.cerrarSesion()">
-                <mat-icon>exit_to_app</mat-icon>
-                <span>Cerrar Sesión</span>
-            </button>
-        </mat-menu>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/perfil">
+        <mat-icon>account_box</mat-icon>
+        <span>Mi Perfil</span>
+      </button>
+      <button mat-menu-item (click)="sidenav.opened = false" (click)="loginService.cerrarSesion()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Cerrar Sesión</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+
+  <!-- AVANZAR ESA PARTE PARA OBTENER EL USUARIO Y ROL DE LA APLICACIÓN -->
+  <mat-card>
+    <mat-toolbar>
+      <app-perfil></app-perfil>
     </mat-toolbar>
+  </mat-card>
 
-    <mat-sidenav-container class="example-sidenav-container">
-        <mat-sidenav #sidenav style="width: 200px" mode="over">
-            <img src="assets/mitocode.png" width="128" style="margin-left: 20px">
+  <mat-sidenav-container class="example-sidenav-container">
+    <mat-sidenav #sidenav style="width: 200px" mode="over">
+      <img src="assets/mitocode.png" width="128" style="margin-left: 20px">
 
-            <div *ngFor="let m of menus">
-                <button mat-menu-item (click)="sidenav.toggle()" routerLink="{{m.url}}" style="cursor: pointer" >
-                    <mat-icon>{{m.icono}}</mat-icon>
-                    <span>{{m.nombre}}</span>
-                </button>
-                <mat-divider></mat-divider>
-            </div> 
+      <div *ngFor="let m of menus">
+        <button mat-menu-item (click)="sidenav.toggle()" routerLink="{{m.url}}" style="cursor: pointer">
+          <mat-icon>{{m.icono}}</mat-icon>
+          <span>{{m.nombre}}</span>
+        </button>
+        <mat-divider></mat-divider>
+      </div>
 
-            
-            <!-- 
+
+      <!--
             <button mat-menu-item (click)="sidenav.toggle()" routerLink="/pages/buscar" style="cursor: pointer">
                 <mat-icon>search</mat-icon>
                 <span>Buscar</span>
@@ -84,12 +90,12 @@
                 <mat-icon>assessment</mat-icon>
                 <span>Reportes</span>
             </button>-->
-        </mat-sidenav>
+    </mat-sidenav>
 
-        <mat-sidenav-content>
-            <router-outlet></router-outlet>                          
-        </mat-sidenav-content>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
 
-    </mat-sidenav-container>
+  </mat-sidenav-container>
 
 </div>

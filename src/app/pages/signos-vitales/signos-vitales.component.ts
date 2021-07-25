@@ -32,7 +32,7 @@ export class SignosVitalesComponent implements OnInit {
     this.signosVitalesService.listarPageable(0, 10).subscribe(data => {
       this.cantidad = data.totalElements;
       this.dataSource = new MatTableDataSource(data.content);
-      console.log({'data': this.dataSource});
+      // console.log({'data': this.dataSource});
 
       this.dataSource.sort = this.sort;
     });

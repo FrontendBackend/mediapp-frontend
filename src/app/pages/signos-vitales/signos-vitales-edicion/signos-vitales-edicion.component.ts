@@ -7,6 +7,9 @@ import * as moment from 'moment';
 import { Observable } from 'rxjs';
 import { Paciente } from 'src/app/_model/paciente';
 import { PacienteService } from 'src/app/_service/paciente.service';
+import { MatDialog } from '@angular/material/dialog';
+import { PacienteDialogoComponent } from '../paciente-dialogo/paciente-dialogo.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-signos-vitales-edicion',
@@ -29,11 +32,19 @@ export class SignosVitalesEdicionComponent implements OnInit {
 
   fechaSeleccionada: Date = new Date();
 
+  enProceso = false;
+
+  isCerrar = false;
+
+  cerrar: string;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private dialog: MatDialog,
     private signosVitalesService: SignosVitalesService,
     private pacienteService: PacienteService,
+    private snackBar: MatSnackBar,
   ) { }
 
   ngOnInit(): void {
@@ -64,14 +75,14 @@ export class SignosVitalesEdicionComponent implements OnInit {
         // this.fechaSeleccionada = fecha;
 
         this.idPacienteSeleccionado = data.paciente.idPaciente,
-        this.fechaSeleccionada = data.fecha,
-        this.form = new FormGroup({
-          'id': new FormControl(data.idSignosVitales),
-          // 'fecha': new FormControl(data.fecha),
-          'temperatura': new FormControl(data.temperatura),
-          'pulso': new FormControl(data.pulso),
-          'ritmo': new FormControl(data.ritmo)
-        });
+          this.fechaSeleccionada = data.fecha,
+          this.form = new FormGroup({
+            'id': new FormControl(data.idSignosVitales),
+            // 'fecha': new FormControl(data.fecha),
+            'temperatura': new FormControl(data.temperatura),
+            'pulso': new FormControl(data.pulso),
+            'ritmo': new FormControl(data.ritmo)
+          });
       });
     }
   }
@@ -92,7 +103,6 @@ export class SignosVitalesEdicionComponent implements OnInit {
     signosVitales.pulso = this.form.value['pulso'];
     signosVitales.ritmo = this.form.value['ritmo'];
 
-
     if (this.edicion) {
       //MODIFICAR
       this.signosVitalesService.modificar(signosVitales).subscribe(() => {
@@ -105,7 +115,6 @@ export class SignosVitalesEdicionComponent implements OnInit {
     }
     else {
       //REGISTRAR
-
       this.signosVitalesService.registrar(signosVitales).subscribe(() => {
         this.signosVitalesService.listar().subscribe(data => {
           this.signosVitalesService.setSignosVitalescambio(data);
@@ -117,15 +126,25 @@ export class SignosVitalesEdicionComponent implements OnInit {
   }
 
   listarPacientes() {
+    this.enProceso = true;
     //this.pacienteService.listar().subscribe(data => this.pacientes = data);
     this.pacientes$ = this.pacienteService.listar();
+    setTimeout(() => {
+      this.enProceso = false;
+    });
   }
 
   estadoBotonRegistrar() {
     return (this.idPacienteSeleccionado === 0);
   }
-  /*aceptar() {
-    let signosVitales = new SignosVitales();
-    signosVitales.fecha = moment(this.fechaSeleccionada).format('YYYY-MM-DDTHH:mm:ss');
-  }*/
+
+  abrirDialogo(paciente?: Paciente) {
+    const dialogo = this.dialog.open(PacienteDialogoComponent, {
+      width: '250px',
+      data: paciente
+    });
+    dialogo.afterClosed().subscribe(resultado => {
+      this.listarPacientes();
+    });
+  }
 }

@@ -12,7 +12,7 @@ export class PacienteService extends GenericService<Paciente>{
 
   private pacienteCambio: Subject<Paciente[]> = new Subject<Paciente[]>();
   private mensajeCambio: Subject<string> = new Subject<string>();
-  
+
   //private url: string = `${environment.HOST}/pacientes`;  //ES6  Template Strings ``
   //constructor(private http: HttpClient) { }
 

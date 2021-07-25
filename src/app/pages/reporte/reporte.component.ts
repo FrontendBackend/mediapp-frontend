@@ -17,7 +17,7 @@ export class ReporteComponent implements OnInit {
   archivosSeleccionados: FileList;
 
   imagenEstado: boolean = false;
-  imagenData: any;  
+  imagenData: any;
 
   constructor(
     private consultaService: ConsultaService,
@@ -37,7 +37,7 @@ export class ReporteComponent implements OnInit {
     let reader = new FileReader();
     reader.readAsDataURL(data);
     reader.onloadend = () => {
-      let base64 = reader.result;                
+      let base64 = reader.result;
       //console.log(base64);
     this.sanar(base64);
     }
@@ -62,8 +62,8 @@ export class ReporteComponent implements OnInit {
       let cantidades = data.map(x => x.cantidad);
       let fechas = data.map(x => x.fecha);
 
-      console.log(cantidades);
-      console.log(fechas);
+      // console.log(cantidades);
+      // console.log(fechas);
 
       this.chart = new Chart('canvas', {
         type: this.tipo,
@@ -113,7 +113,7 @@ export class ReporteComponent implements OnInit {
       let reader = new FileReader();
       reader.onload = (e: any) => {
         this.pdfSrc = e.target.result;
-        console.log(this.pdfSrc);
+        // console.log(this.pdfSrc);
       }
       reader.readAsArrayBuffer(data);
     });

@@ -1,0 +1,19 @@
+<div>
+  <mat-form-field>
+    <input matInput placeholder="Nombres" [(ngModel)]="paciente.nombres" autocomplete="off" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Apellidos" [(ngModel)]="paciente.apellidos" autocomplete="off" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Email" [(ngModel)]="paciente.email" type="email" autocomplete="off">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Teléfono" maxlength="9" [(ngModel)]="paciente.telefono" type="number" autocomplete="off">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="DNI" maxlength="8" [(ngModel)]="paciente.dni" type="number" autocomplete="off" required>
+  </mat-form-field>
+</div>
+<button mat-raised-button color="primary" (click)="operar()">Aceptar</button>
+<button mat-raised-button color="accent" matDialogClose>Cancelar</button>

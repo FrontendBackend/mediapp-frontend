@@ -29,6 +29,8 @@ import { RecuperarComponent } from './login/recuperar/recuperar.component';
 import { TokenComponent } from './login/recuperar/token/token.component';
 import { SignosVitalesComponent } from './signos-vitales/signos-vitales.component';
 import { SignosVitalesEdicionComponent } from './signos-vitales/signos-vitales-edicion/signos-vitales-edicion.component';
+import { PacienteDialogoComponent } from './signos-vitales/paciente-dialogo/paciente-dialogo.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 
 @NgModule({
@@ -42,7 +44,7 @@ import { SignosVitalesEdicionComponent } from './signos-vitales/signos-vitales-e
         PdfViewerModule,
         PagesRoutingModule
     ],
-    exports: [],
+    exports: [PerfilComponent],
     declarations: [
         PacienteComponent,
         MedicoComponent,
@@ -66,7 +68,9 @@ import { SignosVitalesEdicionComponent } from './signos-vitales/signos-vitales-e
         RecuperarComponent,
         TokenComponent,
         SignosVitalesComponent,
-        SignosVitalesEdicionComponent            
+        SignosVitalesEdicionComponent,
+        PacienteDialogoComponent,
+        PerfilComponent
     ],
     providers: [],
 })

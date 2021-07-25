@@ -17,16 +17,16 @@ export class InicioComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const helper = new JwtHelperService();
-    let token = sessionStorage.getItem(environment.TOKEN_NAME);
+    // const helper = new JwtHelperService();
+    // let token = sessionStorage.getItem(environment.TOKEN_NAME);
 
-    const decodedToken = helper.decodeToken(token);
+    // const decodedToken = helper.decodeToken(token);
 
-    this.usuario = decodedToken.user_name;
+    // this.usuario = decodedToken.user_name;
 
-    this.menuService.listarPorUsuario(this.usuario).subscribe(data => {
-      this.menuService.setMenuCambio(data);
-    });
+    // this.menuService.listarPorUsuario(this.usuario).subscribe(data => {
+    //   this.menuService.setMenuCambio(data);
+    // });
   }
 
 }

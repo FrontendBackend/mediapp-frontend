@@ -34,11 +34,13 @@ export class LoginService {
     if (token) {
       this.http.get(`${environment.HOST}/tokens/anular/${token}`).subscribe(() => {
         sessionStorage.clear();
-        this.router.navigate(['login']);
+        // sessionStorage.removeItem(environment.TOKEN_NAME);
+        this.router.navigate(['/login']);
       });
     } else {
       sessionStorage.clear();
-      this.router.navigate(['login']);
+      // sessionStorage.removeItem(environment.TOKEN_NAME);
+      this.router.navigate(['/login']);
     }
   }
 

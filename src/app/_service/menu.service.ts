@@ -26,11 +26,15 @@ export class MenuService extends GenericService<Menu> {
     });
   }
 
+  obtenerMenuPorUsuario(nombre: string) {
+    return this.http.get<Menu>(`${this.url}/obtenerMenuPorUsuario/${nombre}`);
+  }
+
   getMenuCambio() {
     return this.menuCambio.asObservable();
   }
 
-  setMenuCambio(menus: Menu[]) {    
+  setMenuCambio(menus: Menu[]) {
     this.menuCambio.next(menus);
   }
 
