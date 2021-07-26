@@ -14,7 +14,8 @@
     </button>
 
     <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="/perfil">
+      <button mat-menu-item routerLink="/pages/perfil">
+      <!-- <button mat-menu-item> -->
         <mat-icon>account_box</mat-icon>
         <span>Mi Perfil</span>
       </button>
@@ -26,11 +27,14 @@
   </mat-toolbar>
 
   <!-- AVANZAR ESA PARTE PARA OBTENER EL USUARIO Y ROL DE LA APLICACIÓN -->
-  <mat-card>
-    <mat-toolbar>
-      <app-perfil></app-perfil>
-    </mat-toolbar>
-  </mat-card>
+  <!-- <div [hidden]="true"> -->
+  <div [hidden]="true">
+    <mat-card>
+      <mat-toolbar>
+        <app-perfil></app-perfil>
+      </mat-toolbar>
+    </mat-card>
+  </div>
 
   <mat-sidenav-container class="example-sidenav-container">
     <mat-sidenav #sidenav style="width: 200px" mode="over">

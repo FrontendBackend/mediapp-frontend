@@ -13,6 +13,7 @@ import { MedicoComponent } from './medico/medico.component'
 import { Not403Component } from './not403/not403.component';
 import { PacienteEdicionComponent } from './paciente/paciente-edicion/paciente-edicion.component';
 import { PacienteComponent } from './paciente/paciente.component';
+import { PerfilComponent } from './perfil/perfil.component';
 import { ReporteComponent } from './reporte/reporte.component';
 import { SignosVitalesEdicionComponent } from './signos-vitales/signos-vitales-edicion/signos-vitales-edicion.component';
 import { SignosVitalesComponent } from './signos-vitales/signos-vitales.component';
@@ -50,7 +51,8 @@ export const routes: Routes = [
   { path: 'consulta-especial', component: ConsultaEspecialComponent, canActivate: [GuardService] },
   { path: 'buscar', component: BuscarComponent, canActivate: [GuardService] },
   { path: 'reporte', component: ReporteComponent, canActivate: [GuardService] },
-  { path: 'not-403', component: Not403Component }
+  { path: 'not-403', component: Not403Component },
+  { path: 'perfil', component: PerfilComponent }
 ]
 
 @NgModule({

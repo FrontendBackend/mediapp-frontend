@@ -13,7 +13,7 @@ export class PerfilComponent implements OnInit {
 
   usuario: string;
 
-  roles: any;
+  roles: string;
 
   constructor(
     private menuService: MenuService
